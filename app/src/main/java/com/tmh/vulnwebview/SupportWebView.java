@@ -22,7 +22,7 @@ public class SupportWebView extends AppCompatActivity {
 
     @SuppressLint("SetJavaScriptEnabled")
     public void loadWebView() {
-        WebView webView = findViewById(R.id.webview);
+        WebView webView = findViewById(R.id.webview2);
         webView.setWebChromeClient(new WebChromeClient());
         webView.setWebViewClient(new WebViewClient());
 
