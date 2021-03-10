@@ -1,17 +1,13 @@
 package com.tmh.vulnwebview;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
+import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class RegistrationWebView extends AppCompatActivity {
 
@@ -26,10 +22,22 @@ public class RegistrationWebView extends AppCompatActivity {
 
     private void loadWebView() {
         WebView webView = findViewById(R.id.webview);
-        webView.setWebChromeClient(new WebChromeClient());
+        webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
+                Log.d("MyApplication", consoleMessage.message() + " -- From line " +
+                        consoleMessage.lineNumber() + " of " + consoleMessage.sourceId());
+                return true;
+            }
+        });
+
         webView.setWebViewClient(new WebViewClient());
 
-        webView.getSettings().setAllowFileAccess(true);
+        //Allows cross-origin requests from file:// scheme to access content from any origin
+        webView.getSettings().setAllowUniversalAccessFromFileURLs(true);
+
+        //Enabling javascript
+        webView.getSettings().setJavaScriptEnabled(true);
 
         webView.loadUrl(getIntent().getStringExtra("reg_url"));
     }
