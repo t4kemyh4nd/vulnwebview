@@ -7,4 +7,4 @@ Intentionally vulnerable webview implementions in Android
 3. Universal file access allowed in `RegistrationWebView.java` enables exfiltration of private files ( exploit hosted [here](https://recon.takemyhand.xyz/fileaccess.html) )
 
 ## How to install
-- If you want, you can clone this repository into  Android Studio, or you can simply download the `app-debug.apk` and install it on your device.
+- If you want, you can clone this repository into  Android Studio, or you can simply download the `app.apk` and install it on your device.
