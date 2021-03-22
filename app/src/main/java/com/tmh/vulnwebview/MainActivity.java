@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void startRegistration(View v) {
         Intent intent = new Intent(this, RegistrationWebView.class);
+        intent.putExtra("is_reg", true);
         startActivity(intent);
     }
 

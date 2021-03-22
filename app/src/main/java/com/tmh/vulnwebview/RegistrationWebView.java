@@ -39,6 +39,10 @@ public class RegistrationWebView extends AppCompatActivity {
         //Enabling javascript
         webView.getSettings().setJavaScriptEnabled(true);
 
-        webView.loadUrl(getIntent().getStringExtra("reg_url"));
+        if (getIntent().getExtras().getBoolean("is_reg", false)) {
+            webView.loadUrl("file:///android_asset/registration.html");
+        } else {
+            webView.loadUrl(getIntent().getStringExtra("reg_url"));
+        }
     }
 }
